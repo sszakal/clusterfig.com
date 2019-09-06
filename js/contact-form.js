@@ -36,26 +36,43 @@ $(document).ready(function(){
                 'text': "Name:" + user_name + "\n Email: " + user_email + "\nMessage:" + user_message 
             };
 
-            var url = atob('aHR0cHM6Ly9hcGk6NDA5YWExZmI3ODhkOWZkOTI2M2JhMThiNGVmYjhmZDEtNDE2N2MzODItZGFhZGQyMTJAYXBpLm1haWxndW4ubmV0L3YzL3NhbmRib3g1NjQxYWE1OGRlNmE0YTVjOWVhNmE5MmY0MmMwMTIwZi5tYWlsZ3VuLm9yZy9tZXNzYWdlcw==')
+            var url = atob('aHR0cHM6Ly9hcGkubWFpbGd1bi5uZXQvdjMvc2FuZGJveDU2NDFhYTU4ZGU2YTRhNWM5ZWE2YTkyZjQyYzAxMjBmLm1haWxndW4ub3JnL21lc3NhZ2Vz')
+            var username = atob('YXBp')
+            var password = atob('NDA5YWExZmI3ODhkOWZkOTI2M2JhMThiNGVmYjhmZDEtNDE2N2MzODItZGFhZGQyMTI=')
 
-            //Ajax post data to server
-            $.post(url, post_data, function(response){
-            
-                //load json data from server and output message     
-                if (response.type == 'error') {
-                    output = '<div class="error">' + response.text + '</div>';
-                }
-                else {
-                
+            $.ajax({
+                type: 'POST',
+                url: url,
+                headers: {
+                    "Authorization": "Basic " + btoa(username+":"+password)
+                },
+                success : function(data) {
+                    
                     output = '<div class="success"> Message sent !</div>';
                     
                     //reset values in all input fields
                     $('#contact_form input').val('');
                     $('#contact_form textarea').val('');
-                }
+                },
+               error: function (xhr,ajaxOptions,throwError){
+                output = '<div class="error">' + response.text + '</div>';
+              },
+            });
+
+            //Ajax post data to server
+            // $.post(url, post_data, function(response){
+            
+            //     //load json data from server and output message     
+            //     if (response.type == 'error') {
+                    
+            //     }
+            //     else {
                 
-                $("#result").hide().html(output).slideDown();
-            }, 'json');
+
+            //     }
+                
+            //     $("#result").hide().html(output).slideDown();
+            // }, 'json');
             
         }
         
