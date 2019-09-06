@@ -43,6 +43,8 @@ $(document).ready(function(){
             $.ajax({
                 type: 'POST',
                 url: url,
+                "crossDomain": true,
+                contentType: 'application/x-www-form-urlencoded',
                 headers: {
                     "Authorization": "Basic " + btoa(username+":"+password)
                 },
