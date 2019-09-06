@@ -36,7 +36,7 @@ $(document).ready(function(){
                 'text': "Name:" + user_name + "\n Email: " + user_email + "\nMessage:" + user_message 
             };
 
-            var url = atob('aHR0cHM6Ly9hcGk6NDE2N2MzODItZGFhZGQyMTJAYXBpLm1haWxndW4ubmV0L3YzL3NhbmRib3g1NjQxYWE1OGRlNmE0YTVjOWVhNmE5MmY0MmMwMTIwZi5tYWlsZ3VuLm9yZy9tZXNzYWdlcw==')
+            var url = atob('aHR0cHM6Ly9hcGk6NDA5YWExZmI3ODhkOWZkOTI2M2JhMThiNGVmYjhmZDEtNDE2N2MzODItZGFhZGQyMTJAYXBpLm1haWxndW4ubmV0L3YzL3NhbmRib3g1NjQxYWE1OGRlNmE0YTVjOWVhNmE5MmY0MmMwMTIwZi5tYWlsZ3VuLm9yZy9tZXNzYWdlcw==')
 
             //Ajax post data to server
             $.post(url, post_data, function(response){
