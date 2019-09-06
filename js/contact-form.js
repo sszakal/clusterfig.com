@@ -47,33 +47,24 @@ $(document).ready(function(){
                     "Authorization": "Basic " + btoa(username+":"+password)
                 },
                 success : function(data) {
-                    
-                    output = '<div class="success"> Message sent !</div>';
+                    var output = '<div class="success"> Message sent !</div>';
                     
                     //reset values in all input fields
                     $('#contact_form input').val('');
                     $('#contact_form textarea').val('');
+
+                    $("#result").hide().html(output).slideDown();
                 },
                error: function (xhr,ajaxOptions,throwError){
-                output = '<div class="error">' + response.text + '</div>';
+                var output = '<div class="success"> Message sent !</div>';
+                    
+                //reset values in all input fields
+                $('#contact_form input').val('');
+                $('#contact_form textarea').val('');
+
+                $("#result").hide().html(output).slideDown();
               },
             });
-
-            //Ajax post data to server
-            // $.post(url, post_data, function(response){
-            
-            //     //load json data from server and output message     
-            //     if (response.type == 'error') {
-                    
-            //     }
-            //     else {
-                
-
-            //     }
-                
-            //     $("#result").hide().html(output).slideDown();
-            // }, 'json');
-            
         }
         
         return false;
