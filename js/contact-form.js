@@ -29,16 +29,12 @@ $(document).ready(function(){
         //everything looks good! proceed...
         if (proceed) {
             //data to be sent to server
-            //post_data = {
-            //    'name': user_name,
-            //    'email': user_email,
-            //    'message': user_message
-            //};
             
             post_data = {
                 'from': 'clusterfig.com <mailgun@sandbox87be9ff1cab0403e909c8e89cff74cc4.mailgun.org',
                 'to': "stefan.szakal@clusterfig.com",
-                'message': "Name:" + user_name + "\n Email: " + user_email + "\nMessage: + user_message" 
+                'subject': "clusterfig.com contact form",
+                'text': "Name:" + user_name + "\n Email: " + user_email + "\nMessage:" + user_message 
             };
 
             //Ajax post data to server
