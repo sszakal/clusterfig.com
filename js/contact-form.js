@@ -5,13 +5,13 @@ $(document).ready(function(){
     $("#submit_btn").click(function(){
         
         //get input field values
-        var user_name = $('input[name=name]').val();
-        var user_email = $('input[name=email]').val();
-        var user_message = $('textarea[name=message]').val();
+        let user_name = $('input[name=name]').val();
+        let user_email = $('input[name=email]').val();
+        let user_message = $('textarea[name=message]').val();
         
         //simple validation at client's end
         //we simply change border color to red if empty field using .css()
-        var proceed = true;
+        let proceed = true;
         if (user_name == "") {
             $('input[name=name]').css('border-color', '#e41919');
             proceed = false;
@@ -29,7 +29,7 @@ $(document).ready(function(){
         //everything looks good! proceed...
         if (proceed) {
             //data to be sent to server
-            post_data = 
+            let post_data = 
             {
                 "name": user_name,
                 "email": user_email,
@@ -38,30 +38,26 @@ $(document).ready(function(){
 
             var url = "aHR0cHM6Ly9hcGkuY2x1c3RlcmZpZy5jb20vbWFpbGFwaS9hcGkvbWFpbA==";
 
-            $.ajax({
-                type: 'POST',
-                url: atob(url),
-                contentType: 'application/json',
-                data: post_data,
-                success : function() {
-                    var output = '<div class="success"> Message sent !</div>';
-                    
-                    //reset values in all input fields
-                    $('#contact_form input').val('');
-                    $('#contact_form textarea').val('');
-
-                    $("#result").hide().html(output).slideDown();
-                },
-               error: function (){
-                var output = '<div class="success"> Message sent !</div>';
+            	
+            $.post( atob(url), post_data )
+             .done(function() {
+                let output = '<div class="success"> Message sent !</div>';
                     
                 //reset values in all input fields
                 $('#contact_form input').val('');
                 $('#contact_form textarea').val('');
 
                 $("#result").hide().html(output).slideDown();
-              },
-            });
+              })
+             .fail(function() {
+                let output = '<div class="success"> Message sent !</div>';
+                    
+                //reset values in all input fields
+                $('#contact_form input').val('');
+                $('#contact_form textarea').val('');
+
+                $("#result").hide().html(output).slideDown();
+              });
         }
         
         return false;
