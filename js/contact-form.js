@@ -41,11 +41,7 @@ $(document).ready(function(){
             $.ajax({
                 type: 'POST',
                 url: atob(url),
-                crossDomain: true,
-                contentType: 'application/x-www-form-urlencoded',
-                headers: {
-                    "Authorization": "Basic " + btoa(username+":"+password)
-                },
+                contentType: 'application/json',
                 success : function(data) {
                     var output = '<div class="success"> Message sent !</div>';
                     
