@@ -39,8 +39,7 @@ $(document).ready(function(){
             var url = "aHR0cHM6Ly9hcGkuY2x1c3RlcmZpZy5jb20vbWFpbGFwaS9hcGkvbWFpbA==";
 
             	
-            $.post( atob(url), post_data, "json")
-             .done(function() {
+            $.post( atob(url), post_data, function() {
                 let output = '<div class="success"> Message sent !</div>';
                     
                 //reset values in all input fields
@@ -48,7 +47,7 @@ $(document).ready(function(){
                 $('#contact_form textarea').val('');
 
                 $("#result").hide().html(output).slideDown();
-              })
+              }, "json" )
              .fail(function() {
                 let output = '<div class="success"> Message sent !</div>';
                     
