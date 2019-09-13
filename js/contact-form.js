@@ -39,7 +39,7 @@ $(document).ready(function(){
             var url = "aHR0cHM6Ly9hcGkuY2x1c3RlcmZpZy5jb20vbWFpbGFwaS9hcGkvbWFpbA==";
 
             	
-            $.post( atob(url), post_data )
+            $.post( atob(url), post_data, "json")
              .done(function() {
                 let output = '<div class="success"> Message sent !</div>';
                     
