@@ -42,7 +42,8 @@ $(document).ready(function(){
                 type: 'POST',
                 url: atob(url),
                 contentType: 'application/json',
-                success : function(data) {
+                data: post_data,
+                success : function() {
                     var output = '<div class="success"> Message sent !</div>';
                     
                     //reset values in all input fields
@@ -51,7 +52,7 @@ $(document).ready(function(){
 
                     $("#result").hide().html(output).slideDown();
                 },
-               error: function (xhr,ajaxOptions,throwError){
+               error: function (){
                 var output = '<div class="success"> Message sent !</div>';
                     
                 //reset values in all input fields
