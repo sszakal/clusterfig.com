@@ -29,21 +29,19 @@ $(document).ready(function(){
         //everything looks good! proceed...
         if (proceed) {
             //data to be sent to server
-            post_data = {
-                'from': atob('Y2x1c3RlcmZpZy5jb20gPG1haWxndW5AYXBpLm1haWxndW4ubmV0L3YzL3NhbmRib3g1NjQxYWE1OGRlNmE0YTVjOWVhNmE5MmY0MmMwMTIwZi5tYWlsZ3VuLm9yZz4='),
-                'to': atob('c3RlZmFuLnN6YWthbEBjbHVzdGVyZmlnLmNvbQ=='),
-                'subject': "clusterfig.com contact form",
-                'text': "Name:" + user_name + "\n Email: " + user_email + "\nMessage:" + user_message 
+            post_data = 
+            {
+                "name": user_name,
+                "email": user_email,
+                "message": user_message
             };
 
-            var url = atob('aHR0cHM6Ly9hcGkubWFpbGd1bi5uZXQvdjMvc2FuZGJveDU2NDFhYTU4ZGU2YTRhNWM5ZWE2YTkyZjQyYzAxMjBmLm1haWxndW4ub3JnL21lc3NhZ2Vz')
-            var username = atob('YXBp')
-            var password = atob('NDA5YWExZmI3ODhkOWZkOTI2M2JhMThiNGVmYjhmZDEtNDE2N2MzODItZGFhZGQyMTI=')
+            var url = "aHR0cHM6Ly9hcGkuY2x1c3RlcmZpZy5jb20vbWFpbGFwaS9hcGkvbWFpbA==";
 
             $.ajax({
                 type: 'POST',
-                url: url,
-                "crossDomain": true,
+                url: atob(url),
+                crossDomain: true,
                 contentType: 'application/x-www-form-urlencoded',
                 headers: {
                     "Authorization": "Basic " + btoa(username+":"+password)
