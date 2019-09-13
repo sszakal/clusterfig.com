@@ -52,7 +52,7 @@ $(document).ready(function(){
                     $("#result").hide().html(output).slideDown();
                 },
                 error: function (jqXhr, textStatus, errorMessage) {
-                    let output = '<div class="success"> Message sent !</div>';
+                    let output = '<div class="success"> Error !</div>';
                     
                     //reset values in all input fields
                     $('#contact_form input').val('');
