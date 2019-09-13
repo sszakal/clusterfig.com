@@ -38,25 +38,29 @@ $(document).ready(function(){
 
             var url = "aHR0cHM6Ly9hcGkuY2x1c3RlcmZpZy5jb20vbWFpbGFwaS9hcGkvbWFpbA==";
 
-            	
-            $.post( atob(url), post_data, function() {
-                let output = '<div class="success"> Message sent !</div>';
+            $.ajax(atob(url), {
+                type: 'POST',  // http method
+                contentType: "application/json",
+                data: JSON.stringify(post_data),  // data to submit
+                success: function (data, status, xhr) {
+                    let output = '<div class="success"> Message sent !</div>';
                     
-                //reset values in all input fields
-                $('#contact_form input').val('');
-                $('#contact_form textarea').val('');
-
-                $("#result").hide().html(output).slideDown();
-              }, "json" )
-             .fail(function() {
-                let output = '<div class="success"> Message sent !</div>';
+                    //reset values in all input fields
+                    $('#contact_form input').val('');
+                    $('#contact_form textarea').val('');
+    
+                    $("#result").hide().html(output).slideDown();
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    let output = '<div class="success"> Message sent !</div>';
                     
-                //reset values in all input fields
-                $('#contact_form input').val('');
-                $('#contact_form textarea').val('');
-
-                $("#result").hide().html(output).slideDown();
-              });
+                    //reset values in all input fields
+                    $('#contact_form input').val('');
+                    $('#contact_form textarea').val('');
+    
+                    $("#result").hide().html(output).slideDown();
+                }
+            });
         }
         
         return false;
